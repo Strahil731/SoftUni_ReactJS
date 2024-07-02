@@ -4,7 +4,7 @@ export default function Counter() {
     const [count, setCount] = useState(0);
 
     setTimeout(() => {
-        setCount(count + 1);
+        setCount(oldState => oldState + 1);
     }, 1000);
 
     return (
