@@ -1,7 +1,8 @@
 .people_evalution{
     width: 100%;
     margin-top: 20px;
-    background-color: gainsboro;
+    padding: 10px;
+    background-color: #F3EFF3;
 }
 
 .people_evalution h1{
@@ -13,15 +14,29 @@
 }
 
 .people_evalution hr{
-    width: 30%;
+    width: 15%;
+    margin: 10px auto;
+    padding: 2px;
+    background-color: blue;
+}
+
+.people_container{
+    display: flex;
+    margin: 20px;
 }
 
 .current_human{
     width: 30%;
     height: 60vh;
+    margin: 0 30px;
     border: 1px solid black;
     border-radius: 4px;
     text-align: center;
+}
+
+.current_human:hover{
+    background-color: #569BFE;
+    color: white;
 }
 
 .current_human img{
@@ -29,5 +44,16 @@
     width: 10em;
     height: 10em;
     border: 1px solid black;
-    border-radius: 60px;
+    border-radius: 120px;
+}
+
+.current_human p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+}
+
+.current_human h2{
+    margin-top: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: italic;
 }
