@@ -3,6 +3,7 @@ import FirstBody from "./components/FirstBody";
 import FeaturedCars from "./components/FeaturedCars";
 import PeopleEvalution from "./components/PeopleEvalution.jsx";
 import CarBrand from "./components/CarBrand.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
             <FeaturedCars />
             <PeopleEvalution />
             <CarBrand />
+            <Footer />
         </>
     )
 }

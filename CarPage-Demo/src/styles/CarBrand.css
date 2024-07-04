@@ -3,6 +3,8 @@
     box-sizing: border-box;
     display: flex;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px;
 }
 
@@ -13,6 +15,7 @@
 }
 
 .current_car_brand img {
-    width: 10em;
-    height: auto;
+    width: 8em;
+    height: 4em;
+    margin-left: 20px;
 }
