@@ -1,0 +1,9 @@
+.footer_container{
+    box-sizing: border-box;
+    margin-top: 10px;
+    width: 100%;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
