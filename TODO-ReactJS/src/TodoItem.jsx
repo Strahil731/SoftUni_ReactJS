@@ -1,4 +1,6 @@
-export function TodoItem({ completed, id, title, toggleTodo, deleteDoto }) {
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
+export function TodoItem({ completed, id, title, toggleTodo, deleteTodo }) {
     return (
         <>
             <li>
