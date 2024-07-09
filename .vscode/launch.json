@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Edge against localhost",
             "url": "http://localhost:5173",
-            "webRoot": "${workspaceFolder}/client"
+            "webRoot": "${workspaceFolder}/User-List-Workshop/client"
         }
     ]
 }

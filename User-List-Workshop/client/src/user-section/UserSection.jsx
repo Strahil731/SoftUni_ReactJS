@@ -4,6 +4,7 @@ import Pagination from "./pagination/Pagination";
 import UserList from "./user-list/UserList";
 import UserAdd from "./user-add/UserAdd";
 import UserDetails from "./user-details/UserDetails";
+import UserDeleteModal from "./user-delete-modal/UserDeleteModal";
 
 const baseUrl = "http://localhost:3030/jsonstore";
 
@@ -11,6 +12,7 @@ export default function UserSection() {
     const [users, setUser] = useState([]);
     const [showAddUser, setShowAddUser] = useState(false);
     const [showUserDetailsByID, setShowUserDetailsByID] = useState(null);
+    const [showUserDeleteById, setShowUserDeleteById] = useState(null);
 
     useEffect(() => {
         async function getUsers() {
@@ -70,12 +72,17 @@ export default function UserSection() {
         setShowUserDetailsByID(user);
     }
 
-    async function deleteUserClickHandler(user) {
-        const response = await fetch(`${baseUrl}/users/${user._id}`, {
+    function deleteUserClickHandler(user) {
+        setShowUserDeleteById(user._id);
+    }
+
+    async function userDeleteHandler() {
+        const response = await fetch(`${baseUrl}/users/${showUserDeleteById}`, {
             method: "DELETE"
         });
 
-        console.log(response);
+        setUser(oldUser => oldUser.filter((u) => u._id !== showUserDeleteById));
+        setShowUserDeleteById(null);
     }
 
     return (
@@ -99,6 +106,13 @@ export default function UserSection() {
                     <UserDetails
                         user={showUserDetailsByID}
                         onClose={() => setShowUserDetailsByID(null)}
+                    />
+                )}
+
+                {showUserDeleteById && (
+                    <UserDeleteModal
+                        onClose={() => setShowUserDeleteById(null)}
+                        onUserDelete={userDeleteHandler}
                     />
                 )}
 

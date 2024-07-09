@@ -77,7 +77,8 @@ export default function UserList({ users, onUserDetails, onDeleteUser }) {
                             user={user}
                             onUserDetails={onUserDetails}
                             onDeleteUser={onDeleteUser}
-                        />)}
+                        />
+                    )}
                 </tbody>
             </table>
         </div>

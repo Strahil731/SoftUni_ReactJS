@@ -25,7 +25,7 @@ export default function UserListItem({ user, onUserDetails, onDeleteUser }) {
                         </path>
                     </svg>
                 </button>
-                <button className="btn delete-btn" title="Delete" onClick={onDeleteUser(user)}>
+                <button className="btn delete-btn" title="Delete" onClick={() => onDeleteUser(user)}>
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash"
                         className="svg-inline--fa fa-trash" role="img"
                         xmlns="http://www.w3.org/2000/svg"
