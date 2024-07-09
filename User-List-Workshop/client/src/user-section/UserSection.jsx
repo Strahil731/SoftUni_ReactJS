@@ -3,12 +3,14 @@ import Search from "../search/Search";
 import Pagination from "./pagination/Pagination";
 import UserList from "./user-list/UserList";
 import UserAdd from "./user-add/UserAdd";
+import UserDetails from "./user-details/UserDetails";
 
 const baseUrl = "http://localhost:3030/jsonstore";
 
 export default function UserSection() {
     const [users, setUser] = useState([]);
     const [showAddUser, setShowAddUser] = useState(false);
+    const [showUserDetailsByID, setShowUserDetailsByID] = useState(null);
 
     useEffect(() => {
         async function getUsers() {
@@ -40,7 +42,11 @@ export default function UserSection() {
 
         // get user data
         const formData = new FormData(e.currentTarget);
-        const userData = Object.fromEntries(formData);
+        const userData = {
+            ...Object.fromEntries(formData),
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
 
         // make post request
         const response = await fetch(`${baseUrl}/users`, {
@@ -60,16 +66,39 @@ export default function UserSection() {
         setShowAddUser(false);
     }
 
+    function userDetailsClickHandler(user) {
+        setShowUserDetailsByID(user);
+    }
+
+    async function deleteUserClickHandler(user) {
+        const response = await fetch(`${baseUrl}/users/${user._id}`, {
+            method: "DELETE"
+        });
+
+        console.log(response);
+    }
+
     return (
         <>
             <section className="card users-container">
                 <Search />
-                <UserList users={users} />
+                <UserList
+                    users={users}
+                    onUserDetails={userDetailsClickHandler}
+                    onDeleteUser={deleteUserClickHandler}
+                />
 
                 {showAddUser && (
                     <UserAdd
                         closeBtn={addUserCloseHandler}
                         onSave={addUserSaveHandler}
+                    />
+                )}
+
+                {showUserDetailsByID && (
+                    <UserDetails
+                        user={showUserDetailsByID}
+                        onClose={() => setShowUserDetailsByID(null)}
                     />
                 )}
 

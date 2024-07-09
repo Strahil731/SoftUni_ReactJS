@@ -1,6 +1,6 @@
 import UserListItem from "./user-list-item/UserListItem";
 
-export default function UserList({ users }) {
+export default function UserList({ users, onUserDetails, onDeleteUser }) {
     return (
         <div className="table-wrapper">
             <table className="table">
@@ -75,6 +75,8 @@ export default function UserList({ users }) {
                         <UserListItem
                             key={user._id}
                             user={user}
+                            onUserDetails={onUserDetails}
+                            onDeleteUser={onDeleteUser}
                         />)}
                 </tbody>
             </table>
