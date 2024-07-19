@@ -1,12 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ControlledForm() {
 
     const [formValues, setFormValues] = useState({
         username: "",
         password: "",
-        email: ""
+        email: "",
+        age: "",
+        bio: "",
+        occupation: "it",
+        sex: "m",
+        swimming: "",
+        football: ""
     });
+
+    const inputRef = useRef();
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
     useEffect(() => {
         (async () => {
@@ -23,9 +35,13 @@ export default function ControlledForm() {
     }
 
     function changeHandler(event) {
+        console.log(event.target.name);
+        console.log(event.target.checked);
         setFormValues(oldValue => ({
             ...oldValue,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.type
+                ? event.target.checked
+                : event.target.value,
         }));
     }
 
@@ -39,6 +55,7 @@ export default function ControlledForm() {
                     <input
                         type="text"
                         name="username"
+                        ref={inputRef}
                         id="username"
                         value={formValues.username}
                         onChange={changeHandler}
@@ -65,6 +82,77 @@ export default function ControlledForm() {
                         value={formValues.email}
                         onChange={changeHandler}
                         placeholder="strahil1234@abv.bg"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="age">Age</label>
+                    <input
+                        type="number"
+                        name="age"
+                        id="age"
+                        value={formValues.age}
+                        onChange={changeHandler}
+                        placeholder="23"
+                    />
+                </div>
+                <div>
+                    <textarea
+                        name="bio"
+                        id="bio"
+                        value={formValues.bio}
+                        onChange={changeHandler}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="occuperion">Occupation</label>
+                    <select
+                        name="occupation"
+                        id="occupation"
+                        value={formValues.occupation}
+                        onChange={changeHandler}
+                    >
+                        <option value="it">IT</option>
+                        <option value="ba">BA</option>
+                        <option value="ai">AI</option>
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="sex">Sex: </label>
+                    <label>Male</label>
+                    <input
+                        type="radio"
+                        name="sex"
+                        id="sex"
+                        value="m"
+                        checked={formValues.sex === "m"}
+                        onChange={changeHandler}
+                    />
+                    <label> Female</label>
+                    <input
+                        type="radio"
+                        name="sex"
+                        id="sex"
+                        value="f"
+                        checked={formValues.sex === "f"}
+                        onChange={changeHandler}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="swimming">Swimming</label>
+                    <input
+                        type="checkbox"
+                        name="swimming"
+                        id="swimming"
+                        value={formValues.swimming}
+                        onChange={changeHandler}
+                    />
+                    <label htmlFor="football">Football</label>
+                    <input
+                        type="checkbox"
+                        name="football"
+                        id="football"
+                        value={formValues.football}
+                        onChange={changeHandler}
                     />
                 </div>
                 <div>
