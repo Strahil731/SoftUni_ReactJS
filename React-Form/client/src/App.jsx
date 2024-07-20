@@ -1,8 +1,7 @@
 // import ControlledForm from './components/ControlledForm'
 // import RefDemo from './components/RefDemo'
 // import UncrolledForm from './components/UncrolledForm'
-
-import TailWindForm from "./components/TailwindForm"
+import TailwindDemo from "./components/TailwindDemo"
 
 function App() {
 
@@ -11,7 +10,7 @@ function App() {
             {/* <UncrolledForm /> */}
             {/* <ControlledForm /> */}
             {/* <RefDemo /> */}
-            <TailWindForm />
+            <TailwindDemo />
         </>
     )
 }
