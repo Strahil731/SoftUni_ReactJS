@@ -1,11 +1,17 @@
+import { Routes, Route, Navigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ArticleCard from './components/ArticleCard';
+import ArticleList from './components/ArticleList';
+import Article from './components/Article';
 
 function App() {
 
     return (
         <>
-            <ArticleCard />
+            <Routes>
+                <Route path="/" element={<Navigate to='/articles' />} />
+                <Route path="/articles" element={<ArticleList />} />
+                <Route path="/articles/:articleId/details" element={<Article />} />
+            </Routes>
         </>
     )
 }

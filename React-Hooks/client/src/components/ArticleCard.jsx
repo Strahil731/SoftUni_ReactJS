@@ -1,21 +1,22 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
-function ArticleCard() {
+function ArticleCard({ _id, title }) {
 
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Img
                 variant="top"
-                src="https://www.pcworld.com/wp-content/uploads/2023/04/acer-nitro-5-an515-44-r99q-main-100865204-orig.jpeg?quality=50&strip=all"
+                src="https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"
             />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
+                <Card.Title>{title}</Card.Title>
+                {/* <Card.Text>
                     Some quick example text to build on the card title and make up the
                     bulk of the cards content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                </Card.Text> */}
+                <Button as={Link} to={`/articles/${_id}/details`} variant="primary">Details</Button>
             </Card.Body>
         </Card>
     );
